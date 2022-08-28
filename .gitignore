@@ -1,1 +1,5 @@
 .env
+.DS_Store
+demo.iml
+java/target
+java/.idea/

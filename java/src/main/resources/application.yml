@@ -1,0 +1,22 @@
+spring:
+  kafka:
+    listener:
+      concurrency: 3
+    streams:
+      application-id: 'demo-stream-app'
+      properties:
+        num.stream.threads: 3
+    consumer:
+      group-id: 'demo-consumer-group'
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: '*'
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    bootstrap-servers: ${KAFKA_HOST:localhost}:${KAFKA_PORT:9092}
